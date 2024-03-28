@@ -1,0 +1,36 @@
+{
+  "name": "reactnativemodule",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "reset:metro": "npm start -- --reset-cache",
+    "reset": "watchman watch-del-all; rm -rf /tmp/metro-bundler-cache-*; rm -rf /tmp/haste-map-react-native-packager-*; yarn reset:metro"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.73.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native/babel-preset": "0.73.21",
+    "@react-native/metro-config": "0.73.5",
+    "@react-native/typescript-config": "0.73.1",
+    "@types/react": "^18.2.6",
+    "eslint": "^8.19.0",
+    "prettier": "2.8.8",
+    "typescript": "5.0.4"
+  },
+  "resolutions": {
+    "promise": "8.3.0",
+    "react": "18.2.0",
+    "react-native": "0.73.6",
+    "@react-native-community/cli-platform-android": "patch:@react-native-community/cli-platform-android@npm%3A12.3.6#~/.yarn/patches/@react-native-community-cli-platform-android-npm-12.3.6.patch"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "yarn@4.1.0"
+}

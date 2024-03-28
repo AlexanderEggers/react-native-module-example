@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id "com.facebook.react"
+}
+
+react {
+    root = file("../reactnativemodule/")
+    reactNativeDir = file("../reactnativemodule/node_modules/react-native")
+    codegenDir = file("../reactnativemodule/node_modules/@react-native/codegen")
+    cliFile = file("../reactnativemodule/node_modules/react-native/cli.js")
+    entryFile = file("../reactnativemodule/index.js")
+}
+
+android {
+    ndkVersion rootProject.ext.ndkVersion
+    buildToolsVersion = rootProject.ext.buildToolsVersion
+    compileSdk rootProject.ext.compileSdkVersion
+
+    namespace 'com.example.reactnativemoduleapp'
+    defaultConfig {
+        applicationId "com.example.reactnativemoduleapp"
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        debug {
+            keyAlias android.signingConfigs.debug.keyAlias
+            keyPassword android.signingConfigs.debug.keyPassword
+            storeFile android.signingConfigs.debug.storeFile
+            storePassword android.signingConfigs.debug.storePassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    implementation(project(':reactnativemodule'))
+}

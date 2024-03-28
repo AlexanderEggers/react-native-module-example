@@ -1,0 +1,6 @@
+rootProject.name = "React Native Module App"
+include ':app'
+include ':reactnativemodule'
+apply from: file("reactnativemodule/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings, file("reactnativemodule"))
+project(':reactnativemodule').projectDir = new File('reactnativemodule/android')
+includeBuild("reactnativemodule/node_modules/@react-native/gradle-plugin")
